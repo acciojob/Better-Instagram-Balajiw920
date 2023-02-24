@@ -1,23 +1,36 @@
 //your code here
-$(document).ready(function() {
-    var parent = document.getElementById("parent");
+window.onload= function(){
+    var image=document.querySelectorAll('.image');
+    var boxes=document.querySelectorAll('.boxes');
 
-    // Make all divs with class 'image' draggable
-    $('.image').draggable({
-        helper: 'clone',
-        stop: function(event, ui) {
-        }
+    image.addEventListener('dragstart',(e)=>{
+        console.log("dragstart");
+        
+        e.target.className+='.selected';
+        setTimeout(()=>{
+            e.target.className+='hide';
+        },0);
+       
     });
 
-    // Make all divs with class 'image' droppable
-    $('.image').droppable({
-        drop: function(event, ui) {
-            var draggable = ui.draggable;
-            var droppable = $(this);
-            var dragBg = draggable.css('background-image');
-            var dropBg = droppable.css('background-image');
-            draggable.css('background-image', dropBg);
-            droppable.css('background-image', dragBg);
-        }
+    image.addEventListener('dragend',()=>{
+        console.log("dragend");
     });
-});
+
+    boxes.forEach(box=>{
+        box.addEventListener('dragover',(e)=>{
+           e.preventDefault();
+        });
+        box.addEventListener('dragenter',()=>{
+
+        });
+        box.addEventListener('dragleave',()=>{
+
+        });
+        box.addEventListener('drop',()=>{
+
+        });
+    
+
+        });
+    }
